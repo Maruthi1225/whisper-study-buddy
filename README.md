@@ -64,7 +64,7 @@ Together, we’re reimagining education — one whisper at a time. 🌟
 
 ## Project info
 
-**URL**: 
+**Website URL**: https://preview--whisper-study-buddy.lovable.app/ 
 
 ## How can I edit this code?
 
