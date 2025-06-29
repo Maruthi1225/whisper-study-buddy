@@ -1,5 +1,48 @@
 # Welcome to your Lovable project
 
+# 🎤 Exam Whisperer – Your AI Study Buddy
+
+**Exam Whisperer** is a voice-powered AI companion designed to help students revise, understand concepts, take quizzes, and stay motivated — all through natural conversation. Built with 💜 using [OmniDimension](https://www.omnidim.com), this friendly agent turns stressful study sessions into cheerful learning adventures.
+
+---
+
+## 💡 What It Does
+
+- 📚 Explains tricky academic topics using real-life examples
+- 🎲 Gives mini-quizzes and tracks progress
+- 🧠 Adapts to each learner’s pace and preferences
+- 🌈 Encourages students with kindness and warmth
+- 🧸 Feels like a helpful older sibling who *loves to teach*
+
+---
+
+## 🔧 Powered by OmniDimension
+
+[OmniDimension](https://www.omnidim.com) is a platform for building natural-sounding voice agents using GPT-style models and ElevenLabs speech. It enables:
+
+- Real-time voice interaction with LLMs
+- Easy agent creation with rich personas
+- Smart memory, quiz generation, emotion tracking
+- Voice web widget embedding in websites
+
+This project uses:
+- 🎙️ ElevenLabs for natural voice
+- 🧠 GPT-4o-mini for conversational logic
+- 🧩 OmniDimension’s no-code agent builder
+- 📦 Widget for instant web deployment
+
+---
+
+## 🌐 How to Use (Website Version)
+
+1. Clone or download this repository.
+2. Open `index.html` in your browser (or deploy it to Netlify, Vercel, etc.).
+3. The OmniDimension agent is embedded using this script:
+
+```html
+<script id="omnidimension-web-widget" async src="https://backend.omnidim.io/web_widget.js?secret_key=bc958a50352a1ae43265b3498ce553c2"></script>
+
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/79bf7b95-8ab1-49e3-b39c-4a9333d2c45f
