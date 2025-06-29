@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+
 
 # 🎤 Exam Whisperer – Your AI Study Buddy
 
@@ -36,7 +36,7 @@ This project uses:
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/79bf7b95-8ab1-49e3-b39c-4a9333d2c45f
+**URL**: 
 
 ## How can I edit this code?
 
