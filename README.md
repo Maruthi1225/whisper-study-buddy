@@ -15,6 +15,12 @@
 - 🧸 Feels like a helpful older sibling who *loves to teach*
 
 ---
+## Just speak to get started! ✨
+- Ask questions like:
+
+ -“What is mitosis?”
+ -“Can I try a quiz on fractions?”
+ -“Help me revise world history”
 
 ## 🔧 Powered by OmniDimension
 
@@ -79,5 +85,18 @@ This project is built with:
 ## How can I deploy this project?
 
 Deploy it to Netlify or Vercel.
+
+## 🛠️ How to Connect to OmniDimension
+Go to https://www.omnidim.io
+
+--Create an account and set up an agent
+
+--Customize your voice, behavior, and persona
+
+--Grab your widget script (like above)
+
+--Paste it into your HTML page — and done! 🚀
+
+--You can also use their Python SDK (from omnidimension import Client) to manage agents programmatically.
 
 
