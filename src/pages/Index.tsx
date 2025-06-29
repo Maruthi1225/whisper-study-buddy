@@ -1,16 +1,13 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Heart, Trophy, BookOpen, MessageCircle, Star } from "lucide-react";
-import ChatInterface from "@/components/ChatInterface";
-import QuizSection from "@/components/QuizSection";
-import ProgressTracker from "@/components/ProgressTracker";
+import { Brain, Heart, Trophy, BookOpen, MessageCircle, Star, Mic } from "lucide-react";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState("home");
   const [studentName, setStudentName] = useState("");
+  const [widgetLoaded, setWidgetLoaded] = useState(false);
 
   const features = [
     {
@@ -35,17 +32,32 @@ const Index = () => {
     }
   ];
 
-  if (activeSection === "chat") {
-    return <ChatInterface onBack={() => setActiveSection("home")} studentName={studentName} />;
-  }
-
-  if (activeSection === "quiz") {
-    return <QuizSection onBack={() => setActiveSection("home")} studentName={studentName} />;
-  }
-
-  if (activeSection === "progress") {
-    return <ProgressTracker onBack={() => setActiveSection("home")} studentName={studentName} />;
-  }
+  // Load the AI voice agent widget
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.id = 'omnidimension-web-widget';
+    script.async = true;
+    script.src = 'https://backend.omnidim.io/web_widget.js?secret_key=bc958a50352a1ae43265b3498ce553c2';
+    
+    script.onload = () => {
+      setWidgetLoaded(true);
+      console.log('AI Study Widget loaded successfully');
+    };
+    
+    script.onerror = () => {
+      console.error('Failed to load AI Study Widget');
+    };
+    
+    document.head.appendChild(script);
+    
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.getElementById('omnidimension-web-widget');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
@@ -100,7 +112,7 @@ const Index = () => {
               <h2 className="text-2xl font-semibold text-gray-700 mb-4">
                 Welcome back, {studentName}! 🌟
               </h2>
-              <p className="text-gray-600">I'm so happy you're here. What would you like to explore today?</p>
+              <p className="text-gray-600">I'm so happy you're here. Start chatting with your AI study buddy below!</p>
             </div>
           )}
         </div>
@@ -120,46 +132,38 @@ const Index = () => {
           ))}
         </div>
 
-        {/* Action Buttons */}
+        {/* AI Voice Agent Widget Section */}
         {studentName && (
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-blue-200" 
-                  onClick={() => setActiveSection("chat")}>
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageCircle className="w-8 h-8 text-white" />
+          <div className="max-w-4xl mx-auto mb-12">
+            <Card className="border-2 border-blue-200 shadow-lg">
+              <CardHeader className="text-center bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-t-lg">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mic className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-blue-600">Ask Questions</CardTitle>
-                <CardDescription>
-                  Get gentle explanations for any topic you're studying
+                <CardTitle className="text-2xl">Your AI Study Companion</CardTitle>
+                <CardDescription className="text-blue-100">
+                  Talk to me! I can help with questions, quizzes, and track your amazing progress
                 </CardDescription>
               </CardHeader>
-            </Card>
-
-            <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-green-200" 
-                  onClick={() => setActiveSection("quiz")}>
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Trophy className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-green-600">Fun Quizzes</CardTitle>
-                <CardDescription>
-                  Test your knowledge with encouraging, pressure-free quizzes
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-purple-200" 
-                  onClick={() => setActiveSection("progress")}>
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-purple-600">Your Progress</CardTitle>
-                <CardDescription>
-                  See how amazing you're doing and celebrate your wins
-                </CardDescription>
-              </CardHeader>
+              <CardContent className="p-8 text-center">
+                {widgetLoaded ? (
+                  <div>
+                    <p className="text-gray-600 mb-4">
+                      Hi {studentName}! Your AI voice agent is ready. Click the widget below to start our study session! 🎙️
+                    </p>
+                    <Badge variant="outline" className="text-green-600 border-green-600">
+                      ✅ Voice Agent Ready
+                    </Badge>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-gray-600 mb-4">Loading your AI study companion...</p>
+                    <div className="flex justify-center">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
             </Card>
           </div>
         )}
