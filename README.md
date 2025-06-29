@@ -44,15 +44,15 @@ This project uses:
 ## 🛠️ How to Connect to OmniDimension
 Go to https://www.omnidim.io
 
---Create an account and set up an agent
+- Create an account and set up an agent
 
---Customize your voice, behavior, and persona
+- Customize your voice, behavior, and persona
 
---Grab your widget script (like above)
+- Grab your widget script (like above)
 
---Paste it into your HTML page — and done! 🚀
+- Paste it into your HTML page — and done! 🚀
 
---You can also use their Python SDK (from omnidimension import Client) to manage agents programmatically.
+- You can also use their Python SDK (from omnidimension import Client) to manage agents programmatically.
 
 ---
 ## 🤝 Built for Vibe-a-thon
