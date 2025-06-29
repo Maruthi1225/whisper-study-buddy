@@ -7,6 +7,7 @@ import { Brain, Heart, Trophy, BookOpen, MessageCircle, Star, Mic } from "lucide
 
 const Index = () => {
   const [studentName, setStudentName] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [widgetLoaded, setWidgetLoaded] = useState(false);
 
   const features = [
@@ -37,7 +38,7 @@ const Index = () => {
     const script = document.createElement('script');
     script.id = 'omnidimension-web-widget';
     script.async = true;
-    script.src = 'https://backend.omnidim.io/web_widget.js?secret_key=bc958a50352a1ae43265b3498ce553c2';
+    script.src = 'https://backend.omnidim.io/web_widget.js?secret_key=8becee2d1ebb4b73afbf647440d0ec0b';
     
     script.onload = () => {
       setWidgetLoaded(true);
@@ -58,6 +59,18 @@ const Index = () => {
       }
     };
   }, []);
+
+  const handleNameSubmit = () => {
+    if (inputValue.trim()) {
+      setStudentName(inputValue.trim());
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleNameSubmit();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
@@ -93,13 +106,13 @@ const Index = () => {
                     type="text"
                     placeholder="Enter your name..."
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-300 focus:border-pink-400 outline-none"
-                    value={studentName}
-                    onChange={(e) => setStudentName(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && studentName.trim() && setStudentName(studentName.trim())}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyPress}
                   />
                   <Button 
-                    onClick={() => studentName.trim() && setStudentName(studentName.trim())}
-                    disabled={!studentName.trim()}
+                    onClick={handleNameSubmit}
+                    disabled={!inputValue.trim()}
                     className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600"
                   >
                     Let's Go!
