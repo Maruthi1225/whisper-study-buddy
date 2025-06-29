@@ -20,6 +20,7 @@
  -“What is mitosis?”
  -“Can I try a quiz on fractions?”
  -“Help me revise world history”
+ 
 ---
 
 
@@ -39,6 +40,7 @@ This project uses:
 - 📦 Widget for instant web deployment
 
 ---
+
 ## 🛠️ How to Connect to OmniDimension
 Go to https://www.omnidim.io
 
