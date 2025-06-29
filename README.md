@@ -31,16 +31,7 @@ This project uses:
 - 🧩 OmniDimension’s no-code agent builder
 - 📦 Widget for instant web deployment
 
----
 
-## 🌐 How to Use (Website Version)
-
-1. Clone or download this repository.
-2. Open `index.html` in your browser (or deploy it to Netlify, Vercel, etc.).
-3. The OmniDimension agent is embedded using this script:
-
-```html
-<script id="omnidimension-web-widget" async src="https://backend.omnidim.io/web_widget.js?secret_key=bc958a50352a1ae43265b3498ce553c2"></script>
 
 
 ## Project info
